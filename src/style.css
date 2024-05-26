@@ -1,3 +1,32 @@
+#content{
+    display: flex;
+}
+
 body{
     background-color: lightgrey;
+    overflow: hidden;
+}
+
+.picture-frame{
+    flex: 1;
+    display: flex;
+    width: calc(100% - 18px);
+    min-width: calc(100% - 18px - 3rem);
+    height: 30rem;
+    background-color: grey;
+}
+
+div.picture-frame>.imgDiv{
+    min-width: calc(100% - 20px);
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    justify-content: center;
+    overflow: auto;
+    position: relative;
+    right: calc(100% - 20px)
+}
+
+button.left, button.right{
+    width: 1.5rem;
 }
