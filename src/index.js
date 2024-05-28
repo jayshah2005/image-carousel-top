@@ -1,9 +1,12 @@
 import "./style.css";
 import setup1 from "./assests/setup-1.jpg";
 import setup2 from "./assests/setup-2.jpg";
+import setup3 from "./assests/setup-3.jpeg";
+
+// Just add the image to this array to add it to the carousel.
+const imgs = [setup1, setup2, setup3];
 
 const frame = document.querySelector(".picture-frame");
-const imgs = [setup1, setup2];
 var currImage = document.querySelector(":root");
 
 const displacement = 2 * imgs.length + "px";
