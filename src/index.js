@@ -3,16 +3,45 @@ import setup1 from './assests/setup-1.jpg'
 import setup2 from './assests/setup-2.jpg'
 
 const frame = document.querySelector(".picture-frame")
-const imgs = [setup1, setup2]
+const imgs = [setup1, setup2, setup1]
+var currImage = document.querySelector(':root');
 
 imgs.forEach((src) => {
     const imgDiv = document.createElement('div')
     imgDiv.className = 'imgDiv'
+    imgDiv.style.right = '0px'
     const img = document.createElement('img')
     img.src = src;
     img.className = 'img'
     imgDiv.append(img)
     frame.append(imgDiv)
+})
+
+const left = document.querySelector(".left")
+const right = document.querySelector(".right")
+const imgDiv = Array.from(document.querySelectorAll('.imgDiv'))
+
+
+left.addEventListener('click', (event) => {
+    const root = document.querySelector(":root")
+
+    if((getComputedStyle(root).getPropertyValue("--currImage") | 0) > 0){
+        root.style.setProperty("--currImage", (getComputedStyle(root).getPropertyValue("--currImage") | 0) - 1)
+        imgDiv.forEach((div) => {
+            div.style.right = "calc( (100%)*var(--currImage) )";
+        })
+    }
+})
+
+right.addEventListener('click', (event) => {
+    const root = document.querySelector(":root")
+
+    if((getComputedStyle(root).getPropertyValue("--currImage") | 0) < imgs.length - 1){
+        root.style.setProperty("--currImage", (getComputedStyle(root).getPropertyValue("--currImage") | 0) + 1)
+        imgDiv.forEach((div) => {
+            div.style.right = "calc( (100%)*var(--currImage) )";
+        })
+    }
 })
 
 console.log("It works!")

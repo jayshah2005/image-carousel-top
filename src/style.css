@@ -1,3 +1,7 @@
+:root{
+    --currImage: 0;
+}
+
 #content{
     display: flex;
 }
@@ -24,7 +28,7 @@ div.picture-frame>.imgDiv{
     justify-content: center;
     overflow: auto;
     position: relative;
-    right: calc(100% - 20px)
+    pointer-events: none;
 }
 
 button.left, button.right{
