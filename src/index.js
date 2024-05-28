@@ -3,7 +3,7 @@ import setup1 from './assests/setup-1.jpg'
 import setup2 from './assests/setup-2.jpg'
 
 const frame = document.querySelector(".picture-frame")
-const imgs = [setup1, setup2, setup1]
+const imgs = [setup1, setup2]
 var currImage = document.querySelector(':root');
 
 imgs.forEach((src) => {
@@ -43,5 +43,17 @@ right.addEventListener('click', (event) => {
         })
     }
 })
+
+let intervalID = setInterval(() => {
+    const root = document.querySelector(":root")    
+    const currImage = ((getComputedStyle(root).getPropertyValue("--currImage") | 0) + 1) % imgs.length
+
+    root.style.setProperty("--currImage", currImage)
+
+    imgDiv.forEach((div) => {
+        div.style.right = "calc( (100%)*var(--currImage) )";
+    })
+}, 5000)
+
 
 console.log("It works!")
